@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Mod Menu Ultimate</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
+    }
+    html, body {
+        background: transparent;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+    }
+    .menu {
+        width: 340px;
+        background: rgba(18, 18, 20, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 12px;
+        color: #fff;
+        box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+        position: absolute;
+        pointer-events: auto;
+        z-index: 10000;
+        transform-origin: center;
+        transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+        position: relative;
+    }
+    .title {
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        background: linear-gradient(90deg, #00f2ff, #00c3ff, #2b6cff, #9d00ff, #ff0055);
+        background-size: 300% 100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: rainbowMove 5s linear infinite;
+    }
+    @keyframes rainbowMove { 
+        0% { background-position: 0% 50%; } 
+        100% { background-position: 100% 50%; } 
+    }
+    .content {
+        display: flex;
+        gap: 10px;
+        height: 240px;
+    }
+    .left {
+        width: 85px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .tab {
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 11px;
+        color: #888;
+        transition: 0.3s;
+        flex-direction: column;
+        gap: 3px;
+    }
+    .tab i { font-size: 16px; margin-bottom: 2px; }
+    .tab.active {
+        background: linear-gradient(135deg, #2b6cff, #1a4dbd);
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(43, 108, 255, 0.3);
+        transform: translateY(-2px);
+    }
+    .right {
+        flex: 1;
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 14px;
+        padding: 8px;
+        overflow-y: auto;
+        border: 1px solid rgba(255,255,255,0.03);
+    }
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+        padding: 8px 10px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 10px;
+        transition: 0.2s;
+    }
+    .row:hover { background: rgba(255, 255, 255, 0.06); }
+    .row span { font-size: 13px; font-weight: 600; color: #ddd; }
+    .switch {
+        position: relative;
+        width: 40px;
+        height: 22px;
+    }
+    .switch input { display: none; }
+    .slider {
+        position: absolute;
+        inset: 0;
+        background: #333;
+        border-radius: 20px;
+        transition: 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    .slider::before {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        left: 2px;
+        top: 2px;
+        background: #aaa;
+        border-radius: 50%;
+        transition: 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
+    input:checked + .slider {
+        background: rgba(43, 108, 255, 0.2);
+        border-color: #2b6cff;
+    }
+    input:checked + .slider::before {
+        transform: translateX(18px);
+        background: #2b6cff;
+        box-shadow: 0 0 10px #2b6cff;
+    }
+    .tab-content { display: none; animation: slideUp 0.3s ease; }
+    .tab-content.active { display: block; }
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        gap: 8px;
+    }
+    .btn {
+        flex: 1;
+        text-align: center;
+        padding: 10px 0;
+        font-size: 12px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        cursor: pointer;
+        transition: 0.2s;
+        font-weight: 700;
+        border: 1px solid rgba(255,255,255,0.05);
+        display: flex; align-items: center; justify-content: center; gap: 5px;
+    }
+    .btn:active { transform: scale(0.95); }
+    #btnClose { color: #ff4b4b; background: rgba(255, 75, 75, 0.1); border-color: rgba(255, 75, 75, 0.3); }
+    #btnHide { color: #4b89ff; background: rgba(75, 137, 255, 0.1); border-color: rgba(75, 137, 255, 0.3); }
+    .info-container { display: flex; flex-direction: column; gap: 8px; }
+    .social-card {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 12px 15px; border-radius: 12px;
+        cursor: pointer; transition: 0.3s; position: relative;
+        overflow: hidden; text-decoration: none; color: white;
+    }
+    .social-card:active { transform: scale(0.97); }
+    .telegram { background: linear-gradient(135deg, #229ED9, #1c87b9); }
+    .tiktok { background: linear-gradient(135deg, #111, #1a1a1a); border: 1px solid #333; }
+    .social-text { font-size: 13px; font-weight: 700; }
+    .tiktok span:nth-child(1) { color: #25F4EE; }
+    .tiktok span:nth-child(2) { color: #FE2C55; }
+    .open-icon {
+        position: fixed; top: 80px; left: 0;
+        width: 45px; height: 45px;
+        background: rgba(20, 20, 20, 0.9);
+        border-radius: 0 14px 14px 0;
+        display: none; justify-content: center; align-items: center;
+        font-size: 22px; color: #fff;
+        box-shadow: 4px 0 15px rgba(0,0,0,0.5);
+        cursor: pointer; pointer-events: auto; z-index: 9998;
+        border: 1px solid rgba(255,255,255,0.1); border-left: none;
+    }
+    .draggable-btn {
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        z-index: 9997;
+        border-radius: 14px;
+        background: rgba(30, 30, 30, 0.85);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border: 1px solid rgba(255,255,255,0.15);
+        color: #888;
+        display: flex; flex-direction: column;
+        justify-content: center; align-items: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        cursor: pointer; pointer-events: auto;
+        transition: background 0.3s, border 0.3s, transform 0.1s, color 0.3s;
+        user-select: none; touch-action: none;
+        animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .draggable-btn i {
+        font-size: 18px;
+        margin-bottom: 2px;
+        transition: 0.3s;
+    }
+    .draggable-btn span {
+        font-size: 8px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .draggable-btn.active {
+        background: rgba(43, 108, 255, 0.9);
+        border-color: #5c9aff;
+        color: #fff;
+        box-shadow: 0 0 20px rgba(43, 108, 255, 0.5);
+        animation: pulse 2s infinite;
+    }
+    .draggable-btn:active {
+        transform: scale(0.92);
+    }
+    @keyframes popIn {
+        from { transform: scale(0) rotate(-45deg); opacity: 0; }
+        to { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(43, 108, 255, 0.7); }
+        70% { box-shadow: 0 0 0 10px rgba(43, 108, 255, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(43, 108, 255, 0); }
+    }
+</style>
+</head>
+<body>
+<div class="open-icon" id="openIcon"><i class="fa-brands fa-apple"></i></div>
+<div class="menu" id="menu">
+    <div class="header">
+        <div class="title rainbow">𝙃𝙏 𝙄𝙊𝙎 𝘊𝘳𝘢𝘤𝘬 </div>
+    </div>
+    <div class="content">
+        <div class="left">
+            <div class="tab active" data-tab="esp"><i class="fa-solid fa-eye"></i> ESP</div>
+            <div class="tab" data-tab="aimbot"><i class="fa-solid fa-crosshairs"></i> AIM</div>
+            <div class="tab" data-tab="button"><i class="fa-solid fa-gamepad"></i> FUNC</div>
+            <div class="tab" data-tab="info"><i class="fa-solid fa-circle-info"></i> INFO</div>
+        </div>
+        <div class="right">
+            <div class="tab-content active" id="esp">
+                <div class="row"><span>Enable ESP</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+                <div class="row"><span>Line ESP</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+                <div class="row"><span>Box 3D ESP</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+                <div class="row"><span>Show Name</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+                <div class="row"><span>Health Bar</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+                <div class="row"><span>Skeleton</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+            </div>
+            <div class="tab-content" id="aimbot">
+                <div class="row"><span>Enable Aimbot</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+                <div class="row"><span>Show FOV</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+                <div class="row"><span>Smooth Aim</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+                <div class="row"><span>Ignore Knocked</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+            </div>
+            <div class="tab-content" id="button">
+                <div class="row"><span>AimKill 0,5s</span><label class="switch"><input type="checkbox" id="sw_aimkill"><span class="slider"></span></label></div>
+                <div class="row"><span>Fly Mode</span><label class="switch"><input type="checkbox" id="sw_fly"><span class="slider"></span></label></div>
+                <div class="row"><span>Ghost</span><label class="switch"><input type="checkbox" id="sw_ghost"><span class="slider"></span></label></div>
+                <div class="row"><span>Teleport</span><label class="switch"><input type="checkbox" id="sw_teleport"><span class="slider"></span></label></div>
+                <div class="row"><span>Unlock 120 FPS</span><label class="switch"><input type="checkbox" id="sw_fps"><span class="slider"></span></label></div>
+                <div class="row"><span>Speed x8</span><label class="switch"><input type="checkbox" id="sw_speed"><span class="slider"></span></label></div>
+            </div>
+            <div class="tab-content" id="info">
+                <div class="info-container">
+                    <div class="social-card telegram" onclick="window.open('https://t.me/htiosdev', '_blank')">
+                        <div class="social-text"><i class="fa-brands fa-telegram"></i> Telegram</div>
+                        <div class="social-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                    </div>
+                    <div class="social-card tiktok" onclick="window.open('https://tiktok.com/@ht_2590', '_blank')">
+                        <div class="social-text"><i class="fa-brands fa-tiktok"></i> <span>Tik</span><span>Tok</span></div>
+                        <div class="social-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer"> 
+        <div class="btn" id="btnClose"><i class="fa-solid fa-xmark"></i> Close</div>
+        <div class="btn" id="btnHide"><i class="fa-solid fa-eye-slash"></i> Hide</div>
+    </div>
+</div>
+<script>
+class MenuDraggable {
+    constructor(element) {
+        this.el = element;
+        this.isDragging = false;
+        this.startX = 0;
+        this.startY = 0;
+        this.initialLeft = 0;
+        this.initialTop = 0;
+        this.setupEvents();
+    }
+    setupEvents() {
+        this.el.addEventListener('touchstart', (e) => this.dragStart(e.touches[0].clientX, e.touches[0].clientY, e.target));
+        document.addEventListener('touchmove', (e) => this.dragMove(e.touches[0].clientX, e.touches[0].clientY));
+        document.addEventListener('touchend', () => this.dragEnd());
+        this.el.addEventListener('mousedown', (e) => this.dragStart(e.clientX, e.clientY, e.target));
+        document.addEventListener('mousemove', (e) => this.dragMove(e.clientX, e.clientY));
+        document.addEventListener('mouseup', () => this.dragEnd());
+    }
+    dragStart(x, y, target) {
+        if (target.closest('.switch, .tab, .btn, .social-card, .slider, .right')) return;
+        this.isDragging = true;
+        this.startX = x;
+        this.startY = y;
+        const rect = this.el.getBoundingClientRect();
+        this.initialLeft = rect.left;
+        this.initialTop = rect.top;
+        this.el.style.transition = 'none';
+    }
+    dragMove(x, y) {
+        if (!this.isDragging) return;
+        const dx = x - this.startX;
+        const dy = y - this.startY;
+        this.el.style.left = `${this.initialLeft + dx}px`;
+        this.el.style.top = `${this.initialTop + dy}px`;
+    }
+    dragEnd() {
+        this.isDragging = false;
+        this.el.style.transition = 'transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.25s';
+    }
+}
+class FloatingButton {
+    constructor(id, label, iconClass, switchEl) {
+        this.id = id;
+        this.label = label;
+        this.iconClass = iconClass;
+        this.switchEl = switchEl;
+        this.element = null;
+        this.x = window.innerWidth - 65; 
+        this.y = 120 + (document.querySelectorAll('.draggable-btn').length * 60); 
+        this.isDragging = false;
+        this.hasMoved = false;
+        this.switchEl.addEventListener('change', () => this.syncFromSwitch());
+    }
+    spawn() {
+        if (this.element) return;
+        this.element = document.createElement('div');
+        this.element.className = 'draggable-btn active';
+        this.element.innerHTML = `<i class="${this.iconClass}"></i><span>${this.label}</span>`;
+        this.element.style.left = `${this.x}px`;
+        this.element.style.top = `${this.y}px`;
+        document.body.appendChild(this.element);
+        this.attachEvents();
+    }
+    despawn() {
+        if (this.element) {
+            this.element.remove();
+            this.element = null;
+        }
+    }
+    syncFromSwitch() {
+        if (this.switchEl.checked) {
+            this.spawn();
+        } else {
+            this.despawn();
+        }
+    }
+    toggleState() {
+        this.switchEl.checked = !this.switchEl.checked;
+        if (this.switchEl.checked) {
+            this.element.classList.add('active');
+        } else {
+            this.element.classList.remove('active');
+        }
+    }
+    attachEvents() {
+        const onStart = (x, y) => {
+            this.isDragging = true;
+            this.hasMoved = false;
+            this.startX = x;
+            this.startY = y;
+            this.element.style.transition = 'none';
+        };
+        const onMove = (x, y) => {
+            if (!this.isDragging) return;
+            const dx = x - this.startX;
+            const dy = y - this.startY;
+            if (Math.abs(dx) > 2 || Math.abs(dy) > 2) this.hasMoved = true;
+            this.x += dx;
+            this.y += dy;
+            this.element.style.left = `${this.x}px`;
+            this.element.style.top = `${this.y}px`;
+            this.startX = x;
+            this.startY = y;
+        };
+        const onEnd = () => {
+            this.isDragging = false;
+            this.element.style.transition = 'transform 0.1s, box-shadow 0.3s, background 0.3s';
+            if (!this.hasMoved) {
+                this.toggleState();
+            }
+        };
+        this.element.addEventListener('touchstart', (e) => { e.preventDefault(); onStart(e.touches[0].clientX, e.touches[0].clientY); }, {passive: false});
+        document.addEventListener('touchmove', (e) => { if(this.isDragging) onMove(e.touches[0].clientX, e.touches[0].clientY); }, {passive: false});
+        this.element.addEventListener('touchend', onEnd);
+        this.element.addEventListener('mousedown', (e) => { e.preventDefault(); onStart(e.clientX, e.clientY); });
+        document.addEventListener('mousemove', (e) => { if(this.isDragging) onMove(e.clientX, e.clientY); });
+        this.element.addEventListener('mouseup', () => { if(this.isDragging) onEnd(); });
+    }
+}
+const menu = document.getElementById('menu');
+const openIcon = document.getElementById('openIcon');
+const cx = (window.innerWidth - 340) / 2;
+const cy = (window.innerHeight - 300) / 2;
+menu.style.left = `${cx}px`;
+menu.style.top = `${cy}px`;
+new MenuDraggable(menu);
+document.querySelectorAll('.tab').forEach(tab => {
+    tab.onclick = () => {
+        document.querySelectorAll('.tab, .tab-content').forEach(el => el.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+    };
+});
+function toggleMenu(show) {
+    if (show) {
+        menu.style.display = 'block';
+        setTimeout(() => {
+            menu.style.opacity = '1';
+            menu.style.transform = 'scale(1)';
+        }, 10);
+        openIcon.style.display = 'none';
+    } else {
+        menu.style.opacity = '0';
+        menu.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+            menu.style.display = 'none';
+            openIcon.style.display = 'flex';
+        }, 200);
+    }
+}
+openIcon.onclick = () => toggleMenu(true);
+document.getElementById('btnClose').onclick = () => toggleMenu(false);
+document.getElementById('btnHide').onclick = () => {
+    menu.style.display = 'none';
+    openIcon.style.display = 'none';
+    alert("Menu Hidden!");
+};
+const features = [
+    { id: 'sw_aimkill', label: 'AIMKILL', icon: 'fa-solid fa-crosshairs' },
+    { id: 'sw_fly', label: 'FLY', icon: 'fa-solid fa-plane-up' },
+    { id: 'sw_ghost', label: 'GHOST', icon: 'fa-solid fa-ghost' },
+    { id: 'sw_teleport', label: 'TELE', icon: 'fa-solid fa-bolt' },
+    { id: 'sw_fps', label: '120 FPS', icon: 'fa-solid fa-gauge-high' },
+    { id: 'sw_speed', label: 'SPEED', icon: 'fa-solid fa-person-running' }
+];
+features.forEach(f => {
+    const el = document.getElementById(f.id);
+    if(el) new FloatingButton(f.id, f.label, f.icon, el);
+});
+document.addEventListener('keydown', e => {
+    if (e.key === 'Insert') {
+        const isHidden = menu.style.display === 'none';
+        toggleMenu(isHidden);
+    }
+});
+</script>
+</body>
+</html>
