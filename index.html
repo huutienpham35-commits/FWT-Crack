@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>HT IOS CRACK</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'SF Pro Display', 'Roboto', sans-serif;
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
+    }
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+       
+        background-size: cover;
+        pointer-events: none;
+    }
+    .key-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(5, 5, 10, 0.85);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: auto;
+        transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .key-box {
+        width: 320px;
+        background: rgba(25, 25, 30, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 28px;
+        padding: 30px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+        text-align: center;
+        animation: popup 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    .key-box::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(0,198,255,0.1) 0%, transparent 60%);
+        pointer-events: none;
+    }
+    .key-icon {
+        font-size: 40px;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #00c6ff, #0072ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 15px rgba(0, 198, 255, 0.4));
+    }
+    .key-title {
+        font-size: 22px;
+        font-weight: 800;
+        margin-bottom: 8px;
+        color: #fff;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+    .key-desc {
+        font-size: 13px;
+        color: #aaa;
+        margin-bottom: 25px;
+        line-height: 1.4;
+    }
+    .key-input {
+        width: 100%;
+        padding: 16px;
+        background: rgba(0, 0, 0, 0.4);
+        border: 2px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        color: #fff;
+        font-size: 15px;
+        text-align: center;
+        transition: all 0.3s ease;
+        margin-bottom: 18px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+    .key-input::placeholder {
+        color: #555;
+        font-weight: 400;
+        letter-spacing: normal;
+    }
+    .key-input:focus {
+        border-color: #00c6ff;
+        background: rgba(0, 0, 0, 0.6);
+        box-shadow: 0 0 25px rgba(0, 198, 255, 0.15);
+        transform: translateY(-2px);
+    }
+    .key-input.error {
+        border-color: #ff4757;
+        box-shadow: 0 0 20px rgba(255, 71, 87, 0.2);
+        animation: shake 0.4s ease-in-out;
+    }
+    .btn-login {
+        width: 100%;
+        padding: 15px;
+        border-radius: 16px;
+        background: linear-gradient(90deg, #00c6ff, #0072ff);
+        color: #fff;
+        font-weight: 800;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 10px 30px rgba(0, 114, 255, 0.3);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .btn-login:active {
+        transform: scale(0.94);
+        box-shadow: 0 5px 15px rgba(0, 114, 255, 0.2);
+    }
+    .menu {
+        width: 350px;
+        background: linear-gradient(180deg, rgba(20,20,25,0.85), rgba(10,10,12,0.92)), url("https://sf-static.upanhlaylink.com/img/image_2026020676730ff7d2eb41fc9cc83bd57a3a5fcb.jpg");
+        background-size: cover;
+        background-blend-mode: overlay;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 26px;
+        padding: 16px;
+        color: #fff;
+        box-shadow: 0 20px 70px rgba(0,0,0,0.7);
+        position: absolute;
+        pointer-events: auto;
+        z-index: 10000;
+        transform-origin: center;
+        transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        display: none;
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+  .title {
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    background: linear-gradient(
+        90deg,
+        #ff0000,
+        #ff7f00,
+        #ffff00,
+        #00ff00,
+        #00ffff,
+        #0000ff,
+        #8b00ff
+    );
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: rainbow7 4s linear infinite;
+
+    /* ✨ PHÁT SÁNG */
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.6));
+}
+@keyframes rainbow7 {
+    0%   { background-position:   0% 50%; }
+    100% { background-position: 400% 50%; }
+}
+    .content {
+        display: flex;
+        gap: 12px;
+        height: 260px;
+    }
+    .left {
+        width: 82px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .tab {
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.03);
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 10px;
+        color: #666;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+    }
+    .tab i {
+        font-size: 18px;
+        margin-bottom: 4px;
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .tab.active {
+        background: linear-gradient(135deg, rgba(43, 108, 255, 0.15), rgba(43, 108, 255, 0.05));
+        color: #3b82f6;
+        border-color: rgba(59, 130, 246, 0.4);
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+    }
+    .tab.active i {
+        transform: scale(1.15);
+    }
+    .right {
+        flex: 1;
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 18px;
+        padding: 10px;
+        overflow-y: auto;
+        border: 1px solid rgba(255,255,255,0.04);
+    }
+    .right::-webkit-scrollbar { width: 3px; }
+    .right::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+        padding: 12px 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 14px;
+        transition: all 0.2s ease;
+    }
+    .row:active {
+        background: rgba(255, 255, 255, 0.07);
+        transform: scale(0.98);
+    }
+    .row span {
+        font-size: 13px;
+        font-weight: 600;
+        color: #e0e0e0;
+        letter-spacing: 0.3px;
+    }
+    .switch {
+        position: relative;
+        width: 46px;
+        height: 26px;
+    }
+    .switch input { display: none; }
+    .slider {
+        position: absolute;
+        inset: 0;
+        background: #1f1f1f;
+        border-radius: 30px;
+        transition: 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    .slider::before {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        left: 2px;
+        top: 2px;
+        background: #888;
+        border-radius: 50%;
+        transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    input:checked + .slider {
+        background: #2b6cff;
+        border-color: #2b6cff;
+    }
+    input:checked + .slider::before {
+        transform: translateX(20px);
+        background: #fff;
+        box-shadow: 0 0 10px rgba(255,255,255,0.5);
+    }
+    .tab-content { display: none; animation: slideUp 0.4s cubic-bezier(0.19, 1, 0.22, 1); }
+    .tab-content.active { display: block; }
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 16px;
+        gap: 10px;
+    }
+    .btn-footer {
+        flex: 1;
+        padding: 12px;
+        font-size: 12px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.04);
+        color: #fff;
+        font-weight: 700;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,0.06);
+        transition: all 0.2s;
+        display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .btn-footer:active { transform: scale(0.95); background: rgba(255,255,255,0.08); }
+    #btnClose { color: #ff6b6b; border-color: rgba(255, 107, 107, 0.2); background: rgba(255, 107, 107, 0.05); }
+    #btnHide { color: #1dd1a1; border-color: rgba(29, 209, 161, 0.2); background: rgba(29, 209, 161, 0.05); }
+    .info-container { display: flex; flex-direction: column; gap: 10px; }
+    .social-card {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 15px; border-radius: 16px;
+        transition: 0.3s; position: relative;
+        overflow: hidden; text-decoration: none; color: white;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.06);
+    }
+    .social-card:active { transform: scale(0.97); background: rgba(255,255,255,0.06); }
+    .social-card i { font-size: 22px; width: 35px; text-align: center; }
+    .telegram i { color: #229ED9; }
+    .tiktok i { color: #fe2c55; filter: drop-shadow(2px 0 0 #25f4ee); }
+    .website i { color: #a55eea; }
+    .social-text { font-size: 14px; font-weight: 700; flex: 1; margin-left: 10px; }
+    .open-icon {
+        position: fixed; top: 100px; left: 0;
+        width: 48px; height: 48px;
+        background: rgba(20, 20, 20, 0.7);
+        backdrop-filter: blur(12px);
+        border-radius: 0 16px 16px 0;
+        display: none; justify-content: center; align-items: center;
+        font-size: 24px; color: #fff;
+        box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+        z-index: 9998; border: 1px solid rgba(255,255,255,0.1); border-left: none;
+        pointer-events: auto;
+        transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .open-icon:active { transform: scale(0.85); }
+    .draggable-btn {
+        width: 54px; height: 54px;
+        position: fixed; z-index: 9997;
+        border-radius: 18px;
+        background: rgba(20, 20, 20, 0.75);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: #999;
+        display: flex; flex-direction: column;
+        justify-content: center; align-items: center;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+        pointer-events: auto;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        display: none;
+    }
+    .draggable-btn i { font-size: 20px; margin-bottom: 2px; transition: 0.3s; }
+    .draggable-btn span { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+    .draggable-btn.active {
+        background: rgba(43, 108, 255, 0.85);
+        border-color: rgba(100, 150, 255, 0.5);
+        color: #fff;
+        box-shadow: 0 0 30px rgba(43, 108, 255, 0.5);
+        transform: scale(1.08);
+    }
+    .draggable-btn:active { transform: scale(0.95); }
+    @keyframes rainbowMove { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+    @keyframes popup { from { transform: scale(0.8); opacity: 0; filter: blur(10px); } to { transform: scale(1); opacity: 1; filter: blur(0); } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+
+.video-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+</style>
+</head>
+<body>
+<!-- Video Background -->
+<video loop playsinline autoplay muted id="video-bg-mobile" class="video-bg">
+    <source src="https://github.com/huutienpham35-commits/APIBANK/raw/refs/heads/main/thu%20thanh.mp4" type="video/mp4">
+</video>
+
+<div class="key-overlay" id="keyOverlay">
+    <div class="key-box">
+        <div class="key-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="key-title">XÁC THỰC</div>
+        <div class="key-desc">Vui lòng nhập mã kích hoạt để tiếp tục</div>
+        <input type="text" class="key-input" id="keyInput" placeholder="Nhập Key tại đây..." autocomplete="off">
+        <button class="btn-login" id="btnKey">Login</button>
+    </div>
+</div>
+<div class="open-icon" id="openIcon"><i class="fa-brands fa-apple"></i></div>
+<div class="menu" id="menu">
+    <div class="header">
+        <div class="title">𝙃𝙪𝙪𝙏𝙞𝙚𝙣 ✘ 𝘾𝙝𝙚𝙖𝙩 </div>
+    </div>
+    <div class="content">
+        <div class="left">
+            <div class="tab active" data-tab="esp"><i class="fa-solid fa-eye"></i> ESP</div>
+            <div class="tab" data-tab="aimbot"><i class="fa-solid fa-crosshairs"></i> AIM</div>
+            <div class="tab" data-tab="button"><i class="fa-solid fa-bolt"></i> FUNC</div>
+            <div class="tab" data-tab="info"><i class="fa-solid fa-circle-info"></i> INFO</div>
+        </div>
+        <div class="right">
+            <div class="tab-content active" id="esp">
+                <div class="row"><span>Enable ESP</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+                <div class="row"><span>Line ESP</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+                <div class="row"><span>3D BOX ESP</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+                <div class="row"><span>Show Name</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+                <div class="row"><span>Healthy Bar</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+                <div class="row"><span>Skeleton</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+            </div>
+            <div class="tab-content" id="aimbot">
+                <div class="row"><span>Enable Aimbot</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+                <div class="row"><span>Aim FOV</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+                <div class="row"><span>Smooth Aim</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+
+                <div class="row"><span>Ignore Knocked</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+            </div>
+            <div class="tab-content" id="button">
+                <div class="row"><span>AimKill 0,5s</span><label class="switch"><input type="checkbox" id="sw_aimkill"><span class="slider"></span></label></div>
+                <div class="row"><span>Fly Mode</span><label class="switch"><input type="checkbox" id="sw_fly"><span class="slider"></span></label></div>
+                <div class="row"><span>Ghost</span><label class="switch"><input type="checkbox" id="sw_ghost"><span class="slider"></span></label></div>
+                <div class="row"><span>Teleport</span><label class="switch"><input type="checkbox" id="sw_teleport"><span class="slider"></span></label></div>
+                <div class="row"><span>Unlock 120 FPS</span><label class="switch"><input type="checkbox" id="sw_fps"><span class="slider"></span></label></div>
+                <div class="row"><span>Speed x8</span><label class="switch"><input type="checkbox" id="sw_speed"><span class="slider"></span></label></div>
+            </div>
+            <div class="tab-content" id="info">
+                <div class="info-container">
+                    <div class="social-card telegram" onclick="window.open('https://t.me/htios36', '_blank')">
+                        <i class="fa-brands fa-telegram"></i>
+                        <div class="social-text">Kênh Telegram</div>
+                        <i class="fa-solid fa-chevron-right" style="font-size:12px;color:#777"></i>
+                    </div>
+                    <div class="social-card tiktok" onclick="window.open('https://tiktok.com/@ngqhaidang09', '_blank')">
+                        <i class="fa-brands fa-tiktok"></i>
+                        <div class="social-text">Kênh TikTok</div>
+                        <i class="fa-solid fa-chevron-right" style="font-size:12px;color:#777"></i>
+                    </div>
+                    <div class="social-card website" onclick="window.open('https://huutien.store/', '_blank')">
+                        <i class="fa-solid fa-user-astronaut"></i>
+                        <div class="social-text">Website</div>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:12px;color:#777"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer"> 
+        <div class="btn-footer" id="btnClose"><i class="fa-solid fa-xmark"></i> Close</div>
+        <div class="btn-footer" id="btnHide"><i class="fa-solid fa-eye-slash"></i> HIDE</div>
+    </div>
+</div>
+<script>
+    let isKeyVerified = false;
+    const correctKey = 
+"htios2590";
+"htios2590";
+    const keyOverlay = document.getElementById('keyOverlay');
+    const keyInput = document.getElementById('keyInput');
+    const btnKey = document.getElementById('btnKey');
+    const menu = document.getElementById('menu');
+    const openIcon = document.getElementById('openIcon');
+
+    function checkKey() {
+        if (keyInput.value.trim() === correctKey) {
+            isKeyVerified = true;
+            keyOverlay.style.opacity = '0';
+            setTimeout(() => {
+                keyOverlay.style.display = 'none';
+                toggleMenu(true);
+            }, 600);
+        } else {
+            keyInput.classList.add('error');
+            setTimeout(() => keyInput.classList.remove('error'), 400);
+        }
+    }
+    btnKey.onclick = checkKey;
+    keyInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') checkKey(); });
+
+    function toggleMenu(show) {
+        if (!isKeyVerified) return;
+        if (show) {
+            menu.style.display = 'block';
+            setTimeout(() => {
+                menu.style.opacity = '1';
+                menu.style.transform = 'scale(1)';
+            }, 10);
+            openIcon.style.display = 'none';
+        } else {
+            menu.style.opacity = '0';
+            menu.style.transform = 'scale(0.85)';
+            setTimeout(() => {
+                menu.style.display = 'none';
+                openIcon.style.display = 'flex';
+            }, 300);
+        }
+    }
+
+    openIcon.onclick = () => toggleMenu(true);
+    document.getElementById('btnClose').onclick = () => toggleMenu(false);
+    document.getElementById('btnHide').onclick = () => {
+        menu.style.display = 'none';
+        openIcon.style.display = 'none';
+        setTimeout(() => {
+            if(confirm("Menu đã ẩn hoàn toàn. Bạn có muốn hiện lại icon không?")) openIcon.style.display = 'flex';
+        }, 800);
+    };
+
+    class MenuDraggable {
+        constructor(element) {
+            this.el = element;
+            this.isDragging = false;
+            this.startX = 0; this.startY = 0;
+            this.initialLeft = 0; this.initialTop = 0;
+            this.setupEvents();
+        }
+        setupEvents() {
+            const onStart = (x, y, target) => {
+                if(target.closest('.switch, .tab, .btn-footer, .social-card, .slider, .right, .key-input')) return;
+                this.isDragging = true;
+                this.startX = x; this.startY = y;
+                const rect = this.el.getBoundingClientRect();
+                this.initialLeft = rect.left; this.initialTop = rect.top;
+                this.el.style.transition = 'none';
+            };
+            const onMove = (x, y) => {
+                if(!this.isDragging) return;
+                this.el.style.left = `${this.initialLeft + (x - this.startX)}px`;
+                this.el.style.top = `${this.initialTop + (y - this.startY)}px`;
+            };
+            const onEnd = () => {
+                this.isDragging = false;
+                this.el.style.transition = 'all 0.4s cubic-bezier(0.19, 1, 0.22, 1)';
+            };
+            this.el.addEventListener('touchstart', e => onStart(e.touches[0].clientX, e.touches[0].clientY, e.target));
+            document.addEventListener('touchmove', e => onMove(e.touches[0].clientX, e.touches[0].clientY));
+            document.addEventListener('touchend', onEnd);
+            this.el.addEventListener('mousedown', e => onStart(e.clientX, e.clientY, e.target));
+            document.addEventListener('mousemove', e => onMove(e.clientX, e.clientY));
+            document.addEventListener('mouseup', onEnd);
+        }
+    }
+
+    class FloatingButton {
+        constructor(id, label, iconClass, switchEl) {
+            this.id = id; this.label = label; this.iconClass = iconClass; this.switchEl = switchEl;
+            this.element = null;
+            this.x = window.innerWidth - 75;
+            this.y = 120 + (document.querySelectorAll('.draggable-btn').length * 65);
+            this.isDragging = false; this.hasMoved = false;
+            this.switchEl.addEventListener('change', () => this.sync());
+        }
+        spawn() {
+            if(this.element) return;
+            this.element = document.createElement('div');
+            this.element.className = 'draggable-btn active';
+            this.element.style.display = 'flex';
+            this.element.innerHTML = `<i class="${this.iconClass}"></i><span>${this.label}</span>`;
+            this.element.style.left = `${this.x}px`; this.element.style.top = `${this.y}px`;
+            document.body.appendChild(this.element);
+            this.attachEvents();
+        }
+        remove() { if(this.element) { this.element.remove(); this.element = null; } }
+        sync() { this.switchEl.checked ? this.spawn() : this.remove(); }
+        toggle() {
+            this.switchEl.checked = !this.switchEl.checked;
+            this.element.classList.toggle('active', this.switchEl.checked);
+        }
+        attachEvents() {
+            const onStart = (x, y) => {
+                this.isDragging = true; this.hasMoved = false;
+                this.startX = x; this.startY = y;
+                this.element.style.transition = 'none';
+            };
+            const onMove = (x, y) => {
+                if(!this.isDragging) return;
+                if(Math.abs(x - this.startX) > 2 || Math.abs(y - this.startY) > 2) this.hasMoved = true;
+                this.x += (x - this.startX); this.y += (y - this.startY);
+                this.element.style.left = `${this.x}px`; this.element.style.top = `${this.y}px`;
+                this.startX = x; this.startY = y;
+            };
+            const onEnd = () => {
+                this.isDragging = false;
+                this.element.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                if(!this.hasMoved) this.toggle();
+            };
+            this.element.addEventListener('touchstart', e => { e.preventDefault(); onStart(e.touches[0].clientX, e.touches[0].clientY); }, {passive: false});
+            document.addEventListener('touchmove', e => { if(this.isDragging) onMove(e.touches[0].clientX, e.touches[0].clientY); }, {passive: false});
+            this.element.addEventListener('touchend', onEnd);
+            this.element.addEventListener('mousedown', e => { e.preventDefault(); onStart(e.clientX, e.clientY); });
+            document.addEventListener('mousemove', e => { if(this.isDragging) onMove(e.clientX, e.clientY); });
+            this.element.addEventListener('mouseup', () => { if(this.isDragging) onEnd(); });
+        }
+    }
+
+    const cx = (window.innerWidth - 350) / 2;
+    const cy = (window.innerHeight - 320) / 2;
+    menu.style.left = `${cx}px`;
+    menu.style.top = `${cy}px`;
+    new MenuDraggable(menu);
+
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.onclick = () => {
+            document.querySelectorAll('.tab, .tab-content').forEach(el => el.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.tab).classList.add('active');
+        };
+    });
+
+    const features = [
+        { id: 'sw_aimkill', label: 'AIMKILL', icon: 'fa-solid fa-crosshairs' },
+        { id: 'sw_fly', label: 'FLY', icon: 'fa-solid fa-plane-up' },
+        { id: 'sw_ghost', label: 'GHOST', icon: 'fa-solid fa-ghost' },
+        { id: 'sw_teleport', label: 'TELE', icon: 'fa-solid fa-bolt' },
+        { id: 'sw_fps', label: '120FPS', icon: 'fa-solid fa-gauge-high' },
+        { id: 'sw_speed', label: 'SPEED', icon: 'fa-solid fa-person-running' }
+    ];
+    features.forEach(f => {
+        const el = document.getElementById(f.id);
+        if(el) new FloatingButton(f.id, f.label, f.icon, el);
+    });
+
+    document.addEventListener('keydown', e => {
+        if(e.key === 'Insert' && isKeyVerified) {
+            const isHidden = menu.style.display === 'none';
+            toggleMenu(isHidden);
+        }
+    });
+</script>
+</body>
+</html>
